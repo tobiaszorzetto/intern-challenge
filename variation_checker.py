@@ -1,6 +1,6 @@
 import re
-import string
 
+from password_exceptions import MissingCharacterException
 
 class VariationChecker:
     """
@@ -12,4 +12,15 @@ class VariationChecker:
      If not, the password is invalid
     """
 
-    # Write your code here
+    def __init__(self, password: str) -> None:
+        #O(n)
+        if not re.search("[0-9]", password):
+            raise MissingCharacterException("digit")
+        if not re.search("[a-z]", password):
+            raise MissingCharacterException("lowercase character")
+        if not re.search("[A-Z]", password):
+            raise MissingCharacterException("uppercase character")
+        if not re.search("[!$%&\()*+-/?@_]", password):
+            raise MissingCharacterException("special character")
+
+        

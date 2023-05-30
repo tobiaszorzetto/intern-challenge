@@ -37,7 +37,6 @@ class InvalidCharacterException(Exception):
     def __str__(self) -> str:
         return self.msg
 
-
 class InsufficientScoreException(Exception):
     """
     This exception must be used when the password score is lower than the minimum
